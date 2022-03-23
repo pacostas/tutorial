@@ -29,6 +29,9 @@ Before getting started, make sure you have the following prerequisites installed
      - [microk8s](https://microk8s.io/#quick-start)
 1. Helm v3 - https://helm.sh/docs/intro/install/
    - **Note**: This workshop tested with Helm v3.4.0
+1. Kubectl - https://kubernetes.io/docs/tasks/tools/
+     - **_On Linux_**: [Kubernetes](hhttps://kubernetes.io/docs/tasks/tools/install-kubectl-linux/)
+   - **Note**: Kubectl is already installed through Docker for Desktop, on Mac and Windows.
 
 ## Setting up
 
@@ -211,6 +214,24 @@ $ microk8s.enable helm3
 $ curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
 $ chmod 700 get_helm.sh
 $ ./get_helm.sh
+```
+
+### Kubectl
+The Kubernetes command-line tool, kubectl, allows you to run commands against Kubernetes clusters. You can use kubectl to deploy applications, inspect and manage cluster resources, and view logs
+
+#### On linux
+
+```sh
+cat <<EOF | sudo tee /etc/yum.repos.d/kubernetes.repo
+[kubernetes]
+name=Kubernetes
+baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64
+enabled=1
+gpgcheck=1
+repo_gpgcheck=1
+gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
+EOF
+sudo yum install -y kubectl
 ```
 
 ## Downloading the application
