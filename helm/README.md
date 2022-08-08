@@ -251,6 +251,7 @@ In your terminal inside the folder holding your application run:
 $ mkdir chart
 $ cd chart
 $ helm create myapp
+$ cd myapp
 ```
 
 This will create the following file structure:
@@ -315,9 +316,7 @@ The final key thing we are going to add is a dependency, our application needs m
    Then run the following command in the terminal to download the chart:
    
    ```sh
-   cd myapp
    helm dependency update
-   cd ..
    ```
 
 ### 4. Template files
@@ -325,7 +324,7 @@ The final key thing we are going to add is a dependency, our application needs m
 Inside the templates folder you will find that Helm has created some files for us already:
 
 ```sh
-$ ls myapp/templates
+$ ls templates
 
 NOTES.txt
 _helpers.tpl
@@ -340,7 +339,7 @@ tests
 These files represent the kubernetes objects that our Helm Chart will deploy - you can set up the deployment and service, and you can also create a serviceaccount for your app to use. The `NOTES.txt` file is just the notes that will be displayed to the user when they deploy your Helm Chart, you can use this to provide further instruction to them to get your application working. `_helpers.tpl` is where template helpers that you can re-use throughout the chart go. However for this tutorial we are going to use our own files so you can go ahead and remove the generated files:
 
 ```sh
-$ rm -rf chart/myapp/templates/*
+$ rm -rf templates/*
 ```
 
 Now let's move on to making our own template files!
